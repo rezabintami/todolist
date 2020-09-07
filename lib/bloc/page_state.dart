@@ -20,6 +20,8 @@ class OnOnBoardingPage extends PageState {}
 
 class OnFriendListPage extends PageState {}
 
+class OnBlankScreenPage extends PageState {}
+
 class OnAddFriendPage extends PageState {
   final String name;
   OnAddFriendPage(this.name);

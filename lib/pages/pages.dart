@@ -24,6 +24,7 @@ part 'fab.dart';
 part 'login.dart';
 part 'onboarding.dart';
 part 'task.dart';
+part 'blank_screen.dart';
 part 'project.dart';
 part 'detail_project.dart';
 part 'util.dart';

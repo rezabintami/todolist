@@ -23,15 +23,19 @@ class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
     FirebaseUser firebaseUser = Provider.of<FirebaseUser>(context);
-
     if (firebaseUser == null) {
+      prevPageEvent = GoToBlankScreenPage();
+      context.bloc<PageBloc>().add(prevPageEvent);
       if (splashscreen != null) {
         if (!(prevPageEvent is GoToLoginPage)) {
           prevPageEvent = GoToLoginPage();
           context.bloc<PageBloc>().add(prevPageEvent);
         }
+      } else if (!(prevPageEvent is GoToBlankScreenPage)) {
+        prevPageEvent = GoToBlankScreenPage();
+        context.bloc<PageBloc>().add(prevPageEvent);
       } else {
-        prevPageEvent = GoToOnBoardingPage();
+        prevPageEvent = GoToBlankScreenPage();
         context.bloc<PageBloc>().add(prevPageEvent);
       }
     } else {
@@ -51,15 +55,17 @@ class _WrapperState extends State<Wrapper> {
               ? LandingPage()
               : (state is OnOnBoardingPage)
                   ? Onboarding()
-                  : (state is OnProjectPage)
-                      ? ProjectPage()
-                      : (state is OnProjectDetailPage)
-                          ? DetailProjectPage(state.updatetask)
-                          : (state is OnFriendListPage)
-                              ? FriendListPage()
-                              : (state is OnAddFriendPage)
-                                  ? AddFriendPage(state.name)
-                                  : Container(),
+                  : (state is OnBlankScreenPage)
+                      ? BlankScreenPage()
+                      : (state is OnProjectPage)
+                          ? ProjectPage()
+                          : (state is OnProjectDetailPage)
+                              ? DetailProjectPage(state.updatetask)
+                              : (state is OnFriendListPage)
+                                  ? FriendListPage()
+                                  : (state is OnAddFriendPage)
+                                      ? AddFriendPage(state.name)
+                                      : Container(),
     );
   }
 }

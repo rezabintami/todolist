@@ -16,6 +16,8 @@ class GoToProjectDetailPage extends PageEvent {
 
 class GoToOnBoardingPage extends PageEvent {}
 
+class GoToBlankScreenPage extends PageEvent {}
+
 class GoToFriendListPage extends PageEvent {}
 
 class GoToAddFriendPage extends PageEvent {

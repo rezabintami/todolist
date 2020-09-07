@@ -81,6 +81,7 @@ Widget fullAppbar(BuildContext context) {
               } else {
                 TaskLoaded loaded = state as TaskLoaded;
                 DateTime d1 = new DateTime.now();
+                DateFormat dt2 = DateFormat("yyyy-MM-dd");
                 int now = d1.millisecondsSinceEpoch;
                 int estimasi;
                 List<GetTask> todaytask = new List();
@@ -92,8 +93,12 @@ Widget fullAppbar(BuildContext context) {
                   }
                 });
                 int before;
+                String date;
+                String dates = DateFormat("yyyy-MM-dd").format(d1);
+                print(dates);
                 if (todaytask.length != 0) {
                   String datetime = todaytask[0].date + " " + todaytask[0].time;
+                  date = todaytask[0].date;
                   DateTime d2 = DateTime.parse(datetime);
                   DateTime befores = DateTime(d2.year, d2.month, d2.day,
                       d2.hour - 1, d2.minute, d2.second);
@@ -140,7 +145,7 @@ Widget fullAppbar(BuildContext context) {
                             height: 3,
                           ),
                           Text(
-                            todaytask[0].name,
+                            (date == dates) ? todaytask[0].name : "",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 10,
@@ -150,7 +155,7 @@ Widget fullAppbar(BuildContext context) {
                             height: 3,
                           ),
                           Text(
-                            todaytask[0].time,
+                            (date == dates) ? todaytask[0].time : "",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 10,

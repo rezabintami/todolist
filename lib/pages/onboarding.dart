@@ -59,7 +59,7 @@ class _OnboardingState extends State<Onboarding> {
               Expanded(
                 flex: 1,
                 child: RaisedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // HERO-ANIMATION: https://github.com/flutter/flutter/issues/28041
                     // Navigator.of(context).pushReplacement(
                     //   PageRouteBuilder(
@@ -71,6 +71,9 @@ class _OnboardingState extends State<Onboarding> {
                     //   context,
                     //   MaterialPageRoute(builder: (context) => Empty()),
                     // );
+                    SharedPreferences preferences =
+                        await SharedPreferences.getInstance();
+                    preferences.setString("splash_screen", "ada");
                     context.bloc<PageBloc>().add(GoToLoginPage());
                   },
                   textColor: Colors.white,

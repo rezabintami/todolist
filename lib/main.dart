@@ -42,8 +42,12 @@ class _AppState extends State<App> {
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
+            builder: (context, child) => MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(alwaysUse24HourFormat: true),
+                child: child),
             theme: ThemeData(
-              canvasColor: CustomColors.GreyBackground,
+              canvasColor: CustomColors.TextWhite,
               fontFamily: 'rubik',
             ),
             home: Wrapper(),

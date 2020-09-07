@@ -155,6 +155,7 @@ class _DetailProjectPageState extends State<DetailProjectPage> {
                         tanggal = "";
                         await TaskServices.updateTask(addTask);
                         context.bloc<ProjectBloc>().add(ReturnProject());
+                        context.bloc<TaskBloc>().add(ReturnAllTask());
                         context.bloc<TaskBloc>().add(GetAllTask());
                         context.bloc<PageBloc>().add(GoToLandingPage());
                       },

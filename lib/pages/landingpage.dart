@@ -578,7 +578,16 @@ class _LandingPageState extends State<LandingPage> {
                                           });
                                         tanggal = DateFormat("yyyy-MM-dd")
                                             .format(date);
-                                        waktu = "${time.hour}:${time.minute}";
+                                        String jam = "${time.hour}";
+                                        String menit = "${time.minute}";
+                                        if (jam.length == 1) {
+                                          jam = "0${time.hour}";
+                                        }
+                                        if (menit.length == 1) {
+                                          menit = "0${time.minute}";
+                                        }
+                                        waktu = "$jam:$menit";
+                                        print(waktu);
                                       }
                                     },
                                     child: Container(
@@ -623,13 +632,6 @@ class _LandingPageState extends State<LandingPage> {
                                       context
                                           .bloc<TaskBloc>()
                                           .add(GetAllTask());
-
-                                      // Navigator.pushReplacement(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //       builder: (context) => Home()),
-                                      // );
-                                      // Navigator.pop(context);
                                     },
                                     textColor: Colors.white,
                                     padding: const EdgeInsets.all(0.0),

@@ -275,6 +275,7 @@ class _FriendListPageState extends State<FriendListPage> {
               await AuthServices.signOut();
               context.bloc<UserBloc>().add(SignOut());
               preferences.clear();
+              preferences.setString("splash_screen", "ada");
 
               // context.bloc<PageBloc>().add(GoToLoginPage());
             },

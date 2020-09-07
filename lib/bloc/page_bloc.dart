@@ -24,6 +24,10 @@ class PageBloc extends Bloc<PageEvent, PageState> {
       yield OnFriendListPage();
     } else if (event is GoToProjectPage) {
       yield OnProjectPage();
+    } else if (event is GoToBlankScreenPage) {
+      yield OnBlankScreenPage();
+      await Future.delayed(Duration(seconds: 1));
+      yield OnOnBoardingPage();
     } else if (event is GoToProjectDetailPage) {
       yield OnProjectDetailPage(event.updatetask);
     } else if (event is GoToAddFriendPage) {
